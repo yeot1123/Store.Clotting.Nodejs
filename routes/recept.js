@@ -3,7 +3,7 @@ var express = require('express');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
-const thaiFontPath = 'C:\\Fonts\\THSarabun.ttf'; // เปลี่ยนเส้นทางไปยังฟอนต์ที่ถูกต้อง
+const thaiFontPath = '/Users/thanaboon/Fonts/THSarabun.ttf'; // เปลี่ยนเส้นทางไปยังฟอนต์ที่ถูกต้อง
 var router = express.Router();
 
 // GET /recept
@@ -29,7 +29,8 @@ const doc = new PDFDocument({
 const fileName = `Receipt_${PaymentID}_${PayName}.pdf`; // ตั้งชื่อไฟล์ตาม PaymentID และ PayName
 
 // กำหนดเส้นทางเก็บไฟล์ PDF ในโฟลเดอร์ "recept" ใน Drive C
-const filePath = path.join('C:\\Recept', fileName);
+const filePath = path.join('/Users/thanaboon/Recept', fileName);
+
 
 doc.pipe(fs.createWriteStream(filePath)); // ใช้ filePath แทน fileName
 doc.fontSize(25).text(`ใบเสร็จเลขที่ XXXXXX ${PaymentID}`, { underline: true, align: 'center' }); // ใส่ชื่อใบเสร็จและกำหนดให้เนื้อหาอยู่ตรงกลาง

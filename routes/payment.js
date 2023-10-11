@@ -5,7 +5,7 @@ const multer = require('multer'); // เพิ่ม Multer
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/SlipPayment'); // ชื่อโฟลเดอร์ที่คุณต้องการเก็บไฟล์
+    cb(null, '/Users/thanaboon/SlipPayment'); // ชื่อโฟลเดอร์ที่คุณต้องการเก็บไฟล์
   },
   filename: function (req, file, cb) {
     const date = new Date();
@@ -21,7 +21,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-/* GET home page. */
 router.post('/payment/:customerID', upload.single('SlipPayment'),(req, res)=>{	
 var values = [req.body];
 console.log(values);
@@ -35,7 +34,7 @@ console.log(values);
     mysql.query(sql,(err,result)=>{
       if(err){
         res.send(err);
-      } else{
+      } else {
         res.render('confirmPaymentForm', {payment: result});
         console.log('data is',{payment: result});
       }
@@ -43,7 +42,7 @@ console.log(values);
   }
   })
 
-  var sql = 'SELECT products.productName, orders.Quantity, orders.SubTotalPrice FROM products JOIN orders ON products.productID = orders.ProductID Order by orderDate DESC Limit 3  '; // เอาค่า cmID ไป Join ระหว่างตาราง Order กับ Products
+  /*var sql = 'SELECT products.productName, orders.Quantity, orders.SubTotalPrice FROM products JOIN orders ON products.productID = orders.ProductID Order by orderDate DESC Limit 3  '; // เอาค่า cmID ไป Join ระหว่างตาราง Order กับ Products
     mysql.query(sql,(err,result)=>{
       if(err){
         res.send(err);
@@ -51,7 +50,7 @@ console.log(values);
         res.render('confirmPaymentForm', {payment: result});
         console.log('data is',{detail: result});
       }
-    })
+    })*/
 
 });
 
