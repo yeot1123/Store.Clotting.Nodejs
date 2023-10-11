@@ -42,6 +42,17 @@ console.log(values);
     })
   }
   })
+
+  var sql = 'SELECT products.productName, orders.Quantity, orders.SubTotalPrice FROM products JOIN orders ON products.productID = orders.ProductID Order by orderDate DESC Limit 3  '; // เอาค่า cmID ไป Join ระหว่างตาราง Order กับ Products
+    mysql.query(sql,(err,result)=>{
+      if(err){
+        res.send(err);
+      } else{
+        res.render('confirmPaymentForm', {payment: result});
+        console.log('data is',{detail: result});
+      }
+    })
+
 });
 
 module.exports = router;

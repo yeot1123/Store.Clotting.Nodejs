@@ -1,5 +1,4 @@
 var connection = require('../connect');
-var mysql = require('express')
 var express = require('express');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
@@ -13,38 +12,13 @@ router.get('/recept', (req, res, next) => { // .get จะต้องใช้ 
     const PaymentID = req.query.PaymentID;
     const PayAddress = req.query.PayAddress;
     const TotalAll = req.query.TotalAll;
-    const customerID = req.query.customerID;
+    const ProductName = req.query.ProductName
+    const Quantity = req.query.Quantity
 
-    var sql = 'SELECT products.productName, orders.Quantity, orders.SubTotalPrice FROM products JOIN orders ON products.productID = orders.ProductID Order by orderDate DESC Limit 3  '; // เอาค่า cmID ไป Join ระหว่างตาราง Order กับ Products
-    mysql.query(sql,(err,result)=>{
-      if(err){
-        res.send(err);
-      } else{
-        res.render('recept', {detail: result});
-        console.log('data is',{detail: result});
-      }
-    })
-
-    // mysql.query(sql,values,(err,result)=>{
-    //     if(err){
-    //       res.send(err);
-    //   } else{
-    //     var sql = 'SELECT * FROM Orders '; // เอาค่า cmID ไป Join ระหว่างตาราง Order กับ Products
-    //     mysql.query(sql,(err,result)=>{
-    //       if(err){
-    //         res.send(err);
-    //       } else{
-    //         res.render('confirmPaymentForm', {payment: result});
-    //         console.log('data is',{payment: result});
-    //       }
-    //     })
-    //   }
-    //   })
+    
 
 
-
-
-    // สร้างฟอร์มใบเสร็จ PDF
+// สร้างฟอร์มใบเสร็จ PDF
 // สร้างฟอร์มใบเสร็จ PDF
 const doc = new PDFDocument({
     font: thaiFontPath, // เพิ่มฟอนต์ที่รองรับภาษาไทย
@@ -65,9 +39,9 @@ doc.fontSize(18).text(`ที่อยู่: ${PayAddress} `);
 
 
 const items = [
-    { description: 'สินค้า 1', quantity: 'XXXX', price: 'XXXX' },
-    { description: 'สินค้า 2', quantity: 'XXXX', price: 'XXXX' },
-    { description: 'สินค้า 3', quantity: 'XXXX', price: 'XXXX' },
+    { description: `${ProductName}`, quantity:`${Quantity}`, price: 'XXXX' },
+    { description: `${ProductName}`, quantity: `${Quantity}`, price: 'XXXX' },
+    { description: `${ProductName}`, quantity: `${Quantity}`, price: 'XXXX' },
 ];
 
 doc.moveDown(); // เลื่อนลงไปด้านล่าง
