@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Add custom styles for the navigation bar and search bar */
+    .navbar-navbar-default{
+      background-color: #354380;
+      padding: 25px;
+    }
+   
+    .main-content {
+      padding: 20px;
+      text-align: center;
+    }
+    h2{
+      font-weight: 600;
+    }
+    
+    .signup-form {
+      max-width: 1000px;
+      margin: 0 auto ;
+      padding: 20px 20px 30px 20px;
+      /* border: 1px solid #ccc; */
+      border-radius: 30px;
+      /* background-color: #b0bdf7; */
+      position: relative;
+      background-color: rgba(255, 220, 220, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      /* backdrop-filter: blur(15px); */
+      /* -webkit-backdrop-filter: blur(15px); */
+      height: 650px;
+      width: 600px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .signup-form input[type="text"],
+    .signup-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 3px;
+      font-size: 15px;
+      background: rgba(224, 223, 223, 0.6);
+      backdrop-filter: blur(2px);
+      border-radius: 10px;
+      color: #040404;
+      outline: none;
+    }
+    .signup-form button {
+      width: 100%;
+      height: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 10px;
+      background: #bc6202;
+      color: #fff;
+      box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.145);
+      cursor: pointer;
+      transition: .4s;
+    }
+    .signup-form button:hover{
+      width: 100%;
+      padding: 10px;
+      background-color: #0c0805 ;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    body{
+    overflow-x: hidden;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h4 ul li:hover{
+      background-color: #fbefef;
+    }
+    .navbar-header .navbar-brand{
+      padding-top: 10px;
+      font-size: 25px;
+      color:#fff;
+    }
+    .navbar-navbar-default{
+      background-color: #354380;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navigation bar -->
+  <nav class="navbar-navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">NICEDREAM
+          <i class='bx bx-moon'></i>
+        </a>
+      </div>
+      <h4>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/customers_auth/productsForm">Products</a></li>
+          <li><a href="/service">Service</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </h4>
+    </div>
+  </nav>
+
+  <!-- Sign Up Form -->
+  <div class="main-content">
+    <div class="signup-form">
+      <h2>Sign up</h2><br>
+    <div class="input-group">
+      <form action="/signup" method="POST" onsubmit="return validateForm()">
+        <input type="text" placeholder="ชื่อ" name="name" required>
+        <input type="text" placeholder="นามสกุล" name="lastname" required>
+        <input type="text" placeholder="ที่อยู่" name="address" required>
+        <input type="text" placeholder="เบอร์โทรศัพท์" name="tel" required>
+        <input type="text" placeholder="Email address" name="email" required>
+        <input type="text" placeholder="Username" name="username" required>
+        <input type="password" placeholder="Password" name="password" id="password" required>
+        <input type="password" placeholder="Confirm password" name="confirmpassword" id="confirmpassword" required>
+        <button type="submit">สมัครสมาชิก</button>
+      </form>
+    </div>
+      <br>
+      <a href="/">กลับสู่หน้าหลัก</a> <!-- เพิ่มลิงก์กลับสู่หน้าหลัก -->
+    </div>
+  </div>
+  <script>
+    function validateForm() {
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmpassword").value;
+
+      if (password !== confirmPassword) {
+        alert("รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน");
+        return false;
+      }
+
+      return confirm("สมัครสมาชิกเรียบร้อยกดตกลง");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  
+    .navbar {
+      background-color: #354380;
+      color: #c2e7a9;
+    }
+    
+    .navbar-header .navbar-brand{
+      padding-top: 18px;
+      font-size: 25px;
+      color:#fff;
+    }
+    .main-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    }
+  </style>
+  <style>
+    .left-aligned-text {
+      text-align: left;
+    }
+
+    h4 ul li:hover{
+      background-color: #fbefef;
+    }
+
+    body{
+      background: var(--primary-color);
+      overflow-x: hidden;
+    }
+
+    :root{
+      --primary-color:  #354380;
+      --secondary-color: #212121;
+    }
+
+    .dark-theme{
+      --primary-color: #111222;
+      --secondary-color:#fff;
+    } 
+
+    h5{
+      color: white;
+    }
+
+    p{
+      color: #f5dca8;
+    }
+
+  @media screen and (width < 600px) {
+    .content2 {
+      padding: none;
+    }
+    .navbar-navbar-default{
+        grid-template-columns:(auto-fit, minmax(200px, 1fr));
+        padding-top: 15px;
+        color: rgb(0, 0, 0);
+        margin-bottom: 20px;
+      
+    }
+  }
+  @media screen and (width >= 600px) {
+    .content2 {
+      padding-left: 150px;
+      padding-right: 150px;
+      padding-top: 30px; 
+      padding-bottom: 60px; 
+    }
+  }
+
+.main-content h1 {
+      margin-top: 0; /* Remove the default margin from the h1 element */
+      font-size: 100px;
+      color:#fff
+}
+.navbar-header .navbar-brand{
+      padding-top: 18px;
+      font-size: 25px;
+      color:#fff;
+    }
+    .navbar a {
+      color: #060606;
+      border-bottom: 2px solid transparent;
+    }
+  
+    .navbar-navbar-default {
+      padding-top: 15px;
+      color: rgb(0, 0, 0);
+      margin-bottom: 20px;
+    }
+    .navbar .navbar-right {
+      float: right;
+      padding-right: 30px;
+      border-bottom: 2px solid transparent;
+    }
+
+  </style>
+</head>
+<body >
+  <div class="content2">
+    <!-- Navigation bar -->
+    <nav class="navbar-navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">NICEDREAM 
+            <i class='bx bx-moon'></i>  
+
+          </a>
+        </div>
+
+        <h4>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+          </ul>
+        </h4>
+        
+    </nav>
+  </div>
+
+</body>
+</html>
+
+
+<div class="container">
+    <div class="row">
+      <% for(var i=0; i < items.length; i++) { %>
+        <% if (i % 3 === 0) { %>
+          <div class="col-md-4 mx-auto text-center">
+        <% } else if (i % 3 === 1) { %>
+          <div class="col-md-4 mx-auto text-center">
+        <% } else { %>
+          <div class="col-md-4 mx-auto text-center">
+        <% } %>
+          <div class="card">
+            <style>
+              .product-image {
+                 width: 300px;
+                 height: 300px;
+              }
+           </style>
+          <form action="/loginForm" >
+            <br>
+            <img class="product-image" src="<%= '/images/imagesDB/' + items[i].image %>" alt="product image">
+            <div class="card-body">
+              <h5 class="card-title"><%= items[i].productName %></h5>
+              <p class="card-text">Price: <%= items[i].productPrice %></p>
+              <button class="add-to-cart-button" name="productID" value="<%= items[i].productID %>">Add to Cart</button>
+              <style>
+                .add-to-cart-button {
+                  padding: 10px 20px;
+                  background-color: #17a5ba67;
+                  color: black;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+              </style>
+            </div>
+          </form>        
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <br>

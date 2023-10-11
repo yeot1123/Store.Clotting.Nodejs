@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  
+    .navbar {
+      background-color: #354380; 
+      color: #070707;
+      padding: 20px;
+      margin: 0; 
+    }
+    .navbar a {
+      color: #060606;
+    }
+    .navbar-navbar-default {
+      padding-top: 15px;
+      color: rgb(0, 0, 0);
+      margin-bottom: 20px;
+    }
+    .navbar .navbar-right {
+      float: right;
+      padding-right: 30px;
+      border-bottom: 2px solid transparent;
+    }
+    
+    .main-content {
+      padding: 20px;
+      text-align: center;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    h4 ul li:hover{
+      background-color: #fbefef;
+    }
+    .navbar-header .navbar-brand{
+      padding-top: 10px;
+      font-size: 25px;
+      color:#fff;
+    }
+    .navbar-navbar-default{
+      background-color: #354380;
+      padding: 25px;
+    }
+  </style>
+  <style>
+    .left-aligned-text {
+      text-align: left;
+    }
+    .container{
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body >
+  <!-- Navigation bar -->
+  <nav class="navbar-navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">NICEDREAM
+          <i class='bx bx-moon'></i>
+        </a>
+      </div>
+      <h4>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/customers_auth/productsForm">Products</a></li>
+          <li><a href="/service">Service</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </h4>
+    
+
+      <div class="navbar-right">
+        <div class="left-aligned-text">  
+            <form id="cart-form" action="/orders" method="get">
+                <h4><span>ยินดีต้อนรับลูกค้า</span></h4>
+                <a href="/" class="btn btn-success">Logout</a>
+                <button type="submit" class="btn btn-info" onclick="viewCart()">Shopping Cart <span id="cart-count">0</span></button>
+                <input type="hidden" name="productIDs" id="productIDs" value="">
+                <input type="hidden" name="customerID" id="customerID" value="<%= customerID %>">
+                <input type="hidden" name="quantity" id="quantity" value="1">
+            </form>
+        </div>
+    </div>
+
+  </nav>
+<script>
+    
+    var shoppingCart = [];
+
+    function addToCart(productID, productName, productPrice) {
+      var isItemInCart = false;
+      for (var i = 0; i < shoppingCart.length; i++) {
+        if (shoppingCart[i].productID === productID) {
+          isItemInCart = true;
+          break;
+        }
+      }
+
+      if (!isItemInCart) {
+        shoppingCart.push({
+          productID: productID,
+          productName: productName,
+          productPrice: productPrice
+        });
+
+      updateCartCount();
+      updateProductIDsInput(); // Call a new function to update the hidden input field
+    }
+  }
+
+  function updateCartCount() {
+    var cartCount = document.getElementById('cart-count');
+    cartCount.textContent = shoppingCart.length;
+  }
+
+  function viewCart() {
+    // You can implement your logic here to display the shopping cart items to the user.
+    // For example, you could create a modal or redirect the user to a new page.
+    console.log(shoppingCart);
+  }
+
+  function updateProductIDsInput() {
+    // Get the hidden input field
+    var productIDsInput = document.getElementById('productIDs');
+
+    // Get an array of product IDs from the shoppingCart array
+    var productIDsArray = shoppingCart.map(item => item.productID);
+
+    // Set the value of the hidden input field with a comma-separated list of product IDs
+    productIDsInput.value = productIDsArray.join(',');
+  }
+  </script>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <% for(var i=0; i < items.length; i++) { %>
+        <% if (i % 3 === 0) { %>
+          <div class="col-md-4 mx-auto text-center">
+        <% } else if (i % 3 === 1) { %>
+          <div class="col-md-4 mx-auto text-center">
+        <% } else { %>
+          <div class="col-md-4 mx-auto text-center">
+        <% } %>
+          <div class="card">
+            <style>
+              .product-image {
+                width: 300px;
+                height: 300px;
+              }
+            </style>
+            <br>
+            <img class="product-image" src="<%= '/images/imagesDB/' + items[i].image %>" alt="product image">
+            <div class="card-body">
+              <h5 class="card-title"><%= items[i].productName  %></h5>
+              <p class="card-text">Price: <%= items[i].productPrice %></p>
+              <p class="card-text">Stock: <%= items[i].UnitsInStock %></p>
+              <button class="add-to-cart-button" onclick="addToCart('<%= items[i].productID %>', '<%= items[i].productName %>','<%= items[i].productPrice %>' );">Add to Cart</button>
+              <style>
+                .add-to-cart-button {
+                  padding: 10px 20px;
+                  background-color: #17a5ba67;
+                  color: #333; /* Change the text color back to black (#333) */
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

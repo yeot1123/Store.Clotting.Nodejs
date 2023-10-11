@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Add custom styles for the navigation bar and search bar */
+    
+    .navbar a {
+      color: #060606;
+    }
+    .navbar .navbar-right {
+      float: right;
+      padding-right: 20px;
+    }
+    /*
+    .search-container {
+      float: right;
+      margin-right: 10px;
+    }
+    .search-container input[type="text"] {
+      padding: 6px;
+      border: none;
+      width: 200px;
+    }
+    .search-container button {
+      padding: 6px 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    } */
+    .main-content {
+      padding: 20px;
+      text-align: center;
+    }
+    .login-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #17a5ba67;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+     body{
+    overflow-x: hidden;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h4 ul li:hover{
+      background-color: #fbefef;
+    }
+    .navbar-header .navbar-brand{
+      padding-top: 10px;
+      font-size: 25px;
+      color:#fff;
+    }
+    .navbar-navbar-default{
+      background-color: #354380;
+      padding: 25px;
+    }
+    span{
+      /* color: #e76c02; */
+      color: #060606;
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+    .text-center{
+      font-size: 5rem;
+      padding-top: 20px;
+    }
+    td .Edittext{
+      display: inline-block;
+    text-decoration: none;
+    color: black;
+    background: #e76c02;
+    border: 1px solid #e76c02;
+    padding: 9px 25px;
+    line-height: 1.4;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    }
+    
+    td .Edittext:hover{
+      /* transform: scale(1.2); */
+    /* border: 1px solid #f5dca8; */
+    /* background: transparent; */
+    background-color: #060606;
+    color: white;
+    /* transition: .20s; */ 
+    }
+
+    td .deleteBTN{
+      display: inline-block;
+    text-decoration: none;
+    color: black;
+    background: #D32F2F;
+    border: 1px solid #D32F2F;
+    padding: 9px 25px;
+    line-height: 1.4;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    }
+    
+    td .deleteBTN:hover{
+      /* transform: scale(1.2); */
+    /* border: 1px solid #f5dca8; */
+    /* background: transparent; */
+    background-color: #D32F2F;
+    color: white;
+    /* transition: .20s; */ 
+    }
+
+    table thead{
+      background-color: chocolate;
+    }
+    table tbody{
+      background-color: wheat;
+    }
+  </style>
+
+<script>
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete this product?");
+  }
+</script>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar-navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+         <a class="navbar-brand" href="/">NICEDREAM<i class='bx bx-moon'></i></a>
+      </div>
+      <h4>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/addAdmin">เพิ่มสิทธิ์ผู้ดูแลระบบ</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
+        </ul>
+      </h4>
+      <!-- Login and cart -->
+      <div class="navbar-right">
+        <!-- Authorize admin -->
+        <div class="left-aligned-text">        
+                <span>สิทธิ์การใช้งานเฉพาะผู้ดูแลระบบเท่านั้น</span> <a href="/" class="btn btn-success">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="container mt-4">
+    <h3 class="text-center">แสดงรายการสินค้าทั้งหมด</h3>
+    <form class="form-inline justify-content-center mb-4" method="get" action="">
+      
+        <a href="/insertForm" class="btn btn-success">เพิ่มรายการสินค้า</a>  
+
+    </form> <br>
+
+    <div class="table-responsive">
+      <table class="table table-striped"><br>
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach(function(item, index) { %>
+          <tr>
+            <td><%= item.productID %></td>
+            <td><%= item.productName %></td>
+            <td><%= item.productPrice %></td>
+            <td><%= item.productDetail %></td>
+            <td><a class="Edittext" href="/edit/<%= item.productID %>">Edit</a></td>
+            <td><a class="deleteBTN" href="/delete/<%= item.productID %>" onclick="return confirmDelete()">Delete</a></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- ลิงก์เพื่อเรียกใช้งาน DataTables JS -->
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap.min.js"></script>
+  <!-- <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script> -->
+<script>
+  // เรียกใช้ฟังก์ชันนี้เมื่อหน้าโหลดเสร็จ
+  $(document).ready(function() {
+    // ใช้ Bootstrap's DataTable ในการเรียกดูข้อมูล
+    $('table').DataTable({
+      "paging": true, // เปิดใช้งานการแบ่งหน้า
+      "lengthMenu": [10, 25, 50], // แสดงตัวเลือกในการเลือกแสดงข้อมูลต่อหน้า
+      "pageLength": 50 // กำหนดจำนวนข้อมูลที่แสดงในหน้าละ 10 แถว
+    });
+  });
+</script>
+</body>
+</html>

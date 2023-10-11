@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+:root{
+      --primary-color:  #354380;
+      --secondary-color: #212121;
+    }
+
+    .dark-theme{
+      --primary-color: #111222;
+      --secondary-color:#fff;
+    } 
+
+    .main-content {
+      padding: 20%;
+      text-align: center;
+      background-image: url("images/bg3.jpg"); /* Replace "/images/bg.png" with the URL of your desired background image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 850px; /* Set the height of the background to ensure proper display */
+    }
+
+    .main-content h1 {
+      margin-top: 0; /* Remove the default margin from the h1 element */
+    }
+
+    body{
+    overflow-x: hidden;
+    }
+    
+  </style>
+  <style>
+    body{
+    overflow-x: hidden;
+    }
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .left-aligned-text {
+      text-align: left;
+    }
+
+    h4 ul li:hover{
+      background-color: #fbefef;
+    }
+
+    .navbar-header .navbar-brand{
+      padding-top: 18px;
+      font-size: 25px;
+      color:#fff;
+    }
+   
+    .content .main-content .text-box a{
+      display: inline-block;
+      text-decoration: none;
+      color: black;
+      background: #e76c02;
+      border: 1px solid #e76c02;
+      padding: 9px 25px;
+      line-height: 1.4;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .content .main-content .text-box a:hover{
+      transform: scale(1.2);
+      border: 1px solid #f5dca8;
+      background: transparent;
+      color: #e76c02;
+      transition: .20s;
+    }
+
+    body{
+      overflow-x: hidden;
+      background: var(--primary-color);
+    }
+
+    .navbar-right a{
+      display: inline-block;
+      text-decoration: none;
+      color: black;
+      background: #c2e7a9;
+      border: 1px solid #c2e7a9;
+      padding: 9px 15px;
+      line-height: 1.4;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+
+    .navbar-right a:hover{
+      transform: scale(1.2);
+      border: 1px solid #f5dca8;
+      background: transparent;
+      color: #f1f0f0;
+      transition: .20s;
+    }
+
+    .grid{
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+      justify-items: center;
+    }
+
+    .grid-items{
+      width: 40%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      border-radius: 5px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .grid-items:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    .container {
+      font-weight: bold;
+      padding-top: 15px;
+      font-size: medium;
+    }
+
+    h3{
+      font-size: 30px;
+    }
+
+    img {
+      border-radius: 5px 5px 0 0;
+      width: 100%;
+    }
+    
+    .card-content{
+      margin-top: 20px;
+      padding: 2px 16px;
+
+    }
+    
+    @media screen and (width < 600px) {
+  .content2 {
+    padding: none;
+  }
+  .navbar-navbar-default{
+      grid-template-columns:(auto-fit, minmax(200px, 1fr));
+      padding-top: 15px;
+      color: rgb(0, 0, 0);
+      margin-bottom: 20px;
+    
+      }
+    }
+    
+    @media screen and (width >= 600px) {
+      .content2 {
+        padding-left: 150px;
+        padding-right: 150px;
+        padding-top: 45px; 
+        padding-bottom: 60px; 
+      }
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="content2">
+    <!-- Navigation bar -->
+    <nav class="navbar-navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">NICEDREAM 
+            <i class='bx bx-moon'></i>
+            
+          </a>
+        </div>
+        
+        <h4>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/customers_auth/productsForm">Products</a></li>
+            <li><a href="/service">Service</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </h4>
+
+        
+        <!-- Login and cart -->
+        <div class="navbar-right">
+          <a href="/loginForm"><i class='bx bx-group'></i>Login</a> 
+          <!--   -->
+          <a class="register" href="/signupForm"><i class='bx bx-group'></i>Register</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <!-- Main content -->
+  <div class="container">
+    <h3 style="color: rgb(0, 0, 0); text-align: center; font-weight: bolder; "> NICEDREAM เป็นเว็บไซต์สำหรับขายเสื้อผ้าออนไลน์ ยุคใหม่หลากหลายแนว </h3>
+    
+    <div class="grid">
+      <div class="grid-items">
+        <img src="/images/nice.JPG" alt="nicedreamphoto">
+        <div class="card-content">
+          <p> ให้บริการขายเสื้อผ้า ตั้งอยู่ในจังหวัด กรุงเทพฯ</p>
+          <p>มีสามาชิกทั้งหมด 3 คน </p>
+          <ul  style="padding-left: 30px;">
+            <li>เต้ย</li>
+            <li>โด</li>
+            <li>เต้ย</li>
+          </ul>
+          <p>สามารถติดต่อพวกเราได้ที่ เบอร์ 0984876101</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+   
+    
+  </div>
+</body>
+</html>
