@@ -12,9 +12,13 @@ router.get('/recept', (req, res, next) => { // .get จะต้องใช้ 
     const PaymentID = req.query.PaymentID;
     const PayAddress = req.query.PayAddress;
     const TotalAll = req.query.TotalAll;
-    const ProductName = req.query.ProductName
-    const Quantity = req.query.Quantity
+    const ProductName = req.query.ProductName1;
+    const ProductName1 = req.query.ProductName2;
+    const ProductName2 = req.query.ProductName3;
 
+
+    const Quantity = req.query.Quantity;
+    const SubTotalPrice = req.query.SubTotalPrice;
     
 
 
@@ -33,7 +37,7 @@ const filePath = path.join('/Users/thanaboon/Recept', fileName);
 
 
 doc.pipe(fs.createWriteStream(filePath)); // ใช้ filePath แทน fileName
-doc.fontSize(25).text(`ใบเสร็จเลขที่ XXXXXX ${PaymentID}`, { underline: true, align: 'center' }); // ใส่ชื่อใบเสร็จและกำหนดให้เนื้อหาอยู่ตรงกลาง
+doc.fontSize(25).text(`ใบเสร็จเลขที่ ${PaymentID}`, { underline: true, align: 'center' }); // ใส่ชื่อใบเสร็จและกำหนดให้เนื้อหาอยู่ตรงกลาง
 doc.moveDown(); // เลื่อนลงไปด้านล่าง
 doc.fontSize(18).text(`ชื่อลูกค้า: ${PayName}`);
 doc.fontSize(18).text(`ที่อยู่: ${PayAddress} `);
@@ -41,8 +45,8 @@ doc.fontSize(18).text(`ที่อยู่: ${PayAddress} `);
 
 const items = [
     { description: `${ProductName}`, quantity:`${Quantity}`, price: 'XXXX' },
-    { description: `${ProductName}`, quantity: `${Quantity}`, price: 'XXXX' },
-    { description: `${ProductName}`, quantity: `${Quantity}`, price: 'XXXX' },
+    { description: `${ProductName1}`, quantity: `${Quantity}`, price: 'XXXX' },
+    { description: `${ProductName2}`, quantity: `${Quantity}`, price: 'XXXX' },
 ];
 
 doc.moveDown(); // เลื่อนลงไปด้านล่าง
@@ -54,6 +58,7 @@ items.forEach((item, index) => {
     doc.text(item.quantity.toString(), 350, y, { width: 80, align: 'center' });
     doc.text(item.price.toString(), 450, y, { width: 100, align: 'right' });
 });
+
 
 // คำนวณยอดรวม
 doc.moveDown(); // เลื่อนลงไปด้านล่าง

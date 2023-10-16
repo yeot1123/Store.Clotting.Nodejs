@@ -1,55 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Order</title>
-    <style>
-        body {
-            text-align: center; /* จัดข้อความอยู่ตรงกลาง */
-            background-color: #f2f2f2; /* พื้นหลังสีเทา */
-        }
-        .form-group {
-            background-color: #fff; /* พื้นหลังสีขาว */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-            margin: 20px auto; /* จัดกลางในหน้าเว็บ */
-            width: 80%; /* กำหนดความกว้าง */
-        }
-        .download-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-    </style>
-</head>
 <body>
     <form action="/recept" method="get">
     <h1>รายละเอียดการสั่งซื้อ</h1>
     <div class="form-group">
-        <% payment.forEach(function(paymentItem) { %>
-            <p class="card-text">จัดส่งคุณ : <%= paymentItem.PayName %> </p>
-            <p class="card-text">ที่อยู่ในการจัดส่ง : <%= paymentItem.PayAddress %> </p>
-            <p class="card-text">เบอร์ติดต่อ: <%= paymentItem.PayTel %></p>
-            <p class="card-text">จำนวนยอดที่ชำระ : <%= paymentItem.TotalAll %> บาท</p>
+        <p class="card-text">จัดส่งคุณ : <%= payment[0].PayName %></p>
+        <p class="card-text">ที่อยู่ในการจัดส่ง : <%= payment[0].PayAddress %> </p>
+        <p class="card-text">เบอร์ติดต่อ: <%= payment[0].PayTel %></p>
+        <p class="card-text">จำนวนยอดที่ชำระ : <%= payment[0].TotalAll %> บาท</p>
 
-            <input type="hidden" name="PayName" value="<%= paymentItem.PayName %>">
-            <input type="hidden" name="PayAddress" value="<%= paymentItem.PayAddress %>">
-            <input type="hidden" name="PaymentID" value="<%= paymentItem.PaymentID %>">
-            <input type="hidden" name="TotalAll" value="<%= paymentItem.TotalAll %>">
-            <input type="hidden" name="customerID" value="<%= paymentItem.customerID %>">
-            <input type="hidden" name="ProductName" value="<%= paymentItem.productName %>">
-            <input type="hidden" name="Quantity" value="<%= paymentItem.Quantity %>">
-            <button type="submit" class="btn btn-primary">ใบเสร็จการชำระเงิน</button>
-        </form>
-        <% }); %>    
+
+        <input type="hidden" name="PayName" value="<%= payment[0].PayName %>">
+        <input type="hidden" name="PayAddress" value="<%= payment[0].PayAddress %>">
+        <input type="hidden" name="PaymentID" value="<%= payment[0].PaymentID %>">
+        <input type="hidden" name="TotalAll" value="<%= payment[0].TotalAll %>">
+        <input type="hidden" name="customerID" value="<%= payment[0].customerID %>">
+        <input type="hidden" name="ProductName1" value="<%=  products[0].productName %>">
+        <input type="hidden" name="ProductName2" value="<%=  products[1].productName %>">
+        <input type="hidden" name="ProductName3" value="<%=  products[2].productName %>">
+
+
+        <input type="hidden" name="Quantity" value="<%=  products[0].Quantity %>">
+        <input type="hidden" name="SubTotalPrice" value="<%=  products[0].SubTotalPrice  %>">
+
+
+
+        <h2>รายการสินค้าที่สั่งซื้อล่าสุด (สูงสุด 3 รายการ)</h2>
+        <ul>
+            <% products.forEach(function(product) { %>
+                <li>
+                    <p>ชื่อสินค้า: <%= product.productName %></p>
+                    <p>จำนวน: <%= product.Quantity %></p>
+                    <p>ราคารวม: <%= product.SubTotalPrice %> บาท</p>
+                </li>
+            <% }); %>
+
+        </ul>
+        
+        <button type="submit" class="btn btn-primary">ใบเสร็จการชำระเงิน</button>
     </div>
     </form>
+    
 </body>
 </html>
+
+

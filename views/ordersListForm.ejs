@@ -48,12 +48,14 @@
       <div class="text-center mt-4">
         <p id="totalPrice"> ราคารวมทั้งหมด <span id="totalPriceValue"> <%=total%> </span> บาท </p>
       </div>
+
       <div class="text-center">
         <!-- ส่วน HTML ในแบบฟอร์ม -->
         <input type="hidden" name="totalPrice" id="hiddenTotal" value="<%= total %>">
    
         <input type="hidden" name="customerID" id="hiddencustomerID" value='<%= customerID %>'>
         <button type="submit" class="btn btn-secondary">ยืนยันการซื้อสินค้า</button>
+        
       </div>
     </div>
   </form>
