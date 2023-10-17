@@ -12,11 +12,7 @@ router.get('/recept', (req, res, next) => { // .get จะต้องใช้ 
     const PaymentID = req.query.PaymentID;
     const PayAddress = req.query.PayAddress;
     const TotalAll = req.query.TotalAll;
-    const ProductName = req.query.ProductName1;
-    const ProductName1 = req.query.ProductName2;
-    const ProductName2 = req.query.ProductName3;
-
-
+    const ProductName = req.query.ProductName;
     const Quantity = req.query.Quantity;
     const SubTotalPrice = req.query.SubTotalPrice;
     
@@ -44,20 +40,39 @@ doc.fontSize(18).text(`ที่อยู่: ${PayAddress} `);
 
 
 const items = [
-    { description: `${ProductName}`, quantity:`${Quantity}`, price: 'XXXX' },
-    { description: `${ProductName1}`, quantity: `${Quantity}`, price: 'XXXX' },
-    { description: `${ProductName2}`, quantity: `${Quantity}`, price: 'XXXX' },
+    { description: `${ProductName[0]}`, quantity:`${Quantity[0]}`, price: `${SubTotalPrice[0]}` },
+    { description: `${ProductName[1]}`, quantity:`${Quantity[1]}`, price: `${SubTotalPrice[1]}` },
+    { description: `${ProductName[2]}`, quantity:`${Quantity[2]}`, price: `${SubTotalPrice[2]}` }
+
 ];
 
 doc.moveDown(); // เลื่อนลงไปด้านล่าง
 doc.fontSize(16).text('รายการสินค้า', { underline: true });
+
+
+// วนลูปแสดงรายการสินค้า
 // วนลูปแสดงรายการสินค้า
 items.forEach((item, index) => {
     const y = 250 + index * 30; // กำหนดความสูงของแต่ละรายการ
     doc.fontSize(14).text(item.description, 100, y, { width: 200, align: 'left' });
+    
+    // เว้นบรรทัดหลังจากแสดง description
+    doc.moveDown();
+
     doc.text(item.quantity.toString(), 350, y, { width: 80, align: 'center' });
-    doc.text(item.price.toString(), 450, y, { width: 100, align: 'right' });
+    
+    // เว้นบรรทัดหลังจากแสดง quantity
+    doc.moveDown();
+
+    doc.text(item.price.toString(), 450, y, { width: 100, align: 'right'});
+
+    // เว้นบรรทัดหลังจากแสดง price
+    doc.moveDown();
 });
+
+
+
+
 
 
 // คำนวณยอดรวม

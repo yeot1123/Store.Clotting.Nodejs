@@ -13,28 +13,16 @@
         <input type="hidden" name="PaymentID" value="<%= payment[0].PaymentID %>">
         <input type="hidden" name="TotalAll" value="<%= payment[0].TotalAll %>">
         <input type="hidden" name="customerID" value="<%= payment[0].customerID %>">
-        <input type="hidden" name="ProductName1" value="<%=  products[0].productName %>">
-        <input type="hidden" name="ProductName2" value="<%=  products[1].productName %>">
-        <input type="hidden" name="ProductName3" value="<%=  products[2].productName %>">
-
-
-        <input type="hidden" name="Quantity" value="<%=  products[0].Quantity %>">
-        <input type="hidden" name="SubTotalPrice" value="<%=  products[0].SubTotalPrice  %>">
-
-
-
-        <h2>รายการสินค้าที่สั่งซื้อล่าสุด (สูงสุด 3 รายการ)</h2>
-        <ul>
-            <% products.forEach(function(product) { %>
-                <li>
-                    <p>ชื่อสินค้า: <%= product.productName %></p>
-                    <p>จำนวน: <%= product.Quantity %></p>
-                    <p>ราคารวม: <%= product.SubTotalPrice %> บาท</p>
-                </li>
-            <% }); %>
-
-        </ul>
         
+        <% for (let i = 0; i < products.length; i++) { %>
+            <input type="hidden" name="ProductName" value="<%=  products[i].productName %>">
+            <input type="hidden" name="Quantity" value="<%=  products[i].Quantity %>">
+            <input type="hidden" name="SubTotalPrice" value="<%=  products[i].SubTotalPrice  %>">
+        <% } %>
+
+
+       
+
         <button type="submit" class="btn btn-primary">ใบเสร็จการชำระเงิน</button>
     </div>
     </form>

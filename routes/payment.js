@@ -38,7 +38,7 @@ router.post('/payment/:customerID', upload.single('/Users/thanaboon/SlipPayment'
           res.send(err);
         } else {
           // เรียกข้อมูลสินค้าที่สั่งซื้อล่าสุด
-          var sql3 = 'SELECT products.productName as productName, orders.Quantity as Quantity, SUM(orders.SubTotalPrice) as SubTotalPrice FROM products JOIN orders ON products.productID = orders.ProductID WHERE orders.customerID = ? GROUP BY productName ORDER BY orderDate DESC LIMIT 3';
+          var sql3 = 'SELECT products.productName as productName, orders.Quantity as Quantity, orders.SubTotalPrice as SubTotalPrice FROM products JOIN orders ON products.productID = orders.ProductID WHERE orders.customerID = ? ORDER BY orderDate DESC LIMIT 3';
           mysql.query(sql3, id, (err, productResult) => {
             if (err) {
               res.send(err);
