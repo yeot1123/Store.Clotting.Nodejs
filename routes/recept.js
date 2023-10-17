@@ -68,6 +68,7 @@ items.forEach((item, index) => {
 
     // เว้นบรรทัดหลังจากแสดง price
     doc.moveDown();
+    
 });
 
 

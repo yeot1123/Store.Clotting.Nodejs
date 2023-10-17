@@ -200,6 +200,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Details</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -210,6 +211,7 @@
             <td><%= item.productID %></td>
             <td><%= item.productName %></td>
             <td><%= item.productPrice %></td>
+            <td><%= item.UnitsInStock %></td>
             <td><%= item.productDetail %></td>
             <td><a class="Edittext" href="/edit/<%= item.productID %>">Edit</a></td>
             <td><a class="deleteBTN" href="/delete/<%= item.productID %>" onclick="return confirmDelete()">Delete</a></td>
@@ -227,6 +229,7 @@
   <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap.min.js"></script>
   <!-- <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script> -->
 <script>
+
   // เรียกใช้ฟังก์ชันนี้เมื่อหน้าโหลดเสร็จ
   $(document).ready(function() {
     // ใช้ Bootstrap's DataTable ในการเรียกดูข้อมูล

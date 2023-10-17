@@ -3,25 +3,28 @@ var router = express.Router();
 var mysql = require('../connect');
 const multer = require('multer'); // เพิ่ม Multer
 
+//'/Users/thanaboon/SlipPayment
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '/Users/thanaboon/SlipPayment'); // ชื่อโฟลเดอร์ที่คุณต้องการเก็บไฟล์
   },
   filename: function (req, file, cb) {
     const date = new Date();
-    const timestamp = date.getTime(); // หาค่า timestamp ปัจจุบัน
-    const fileExtension = file.originalname.split('.').pop(); // หาน  ามสกุลของไฟล์
+    // const timestamp = date.getTime(); // หาค่า timestamp ปัจจุบัน
+    // const fileExtension = file.originalname.split('.').pop(); // หานามสกุลของไฟล์
 
     // สร้างชื่อไฟล์ใหม่โดยใช้ timestamp และนามสกุลไฟล์
-    const newFileName = `${timestamp}.${fileExtension}`;
-    cb(null, newFileName);
+    // const newFileName = `${file.originalname}.${fileExtension}`;
+    cb(null, file.originalname);
   },
 });
+
+
 
 const upload = multer({ storage: storage });
 
 
-router.post('/payment/:customerID', upload.single('/Users/thanaboon/SlipPayment'), (req, res) => {
+router.post('/payment/:customerID', upload.single('SlipPayment'), (req, res) => {
   var values = [req.body];
   var id = req.params.customerID;
 

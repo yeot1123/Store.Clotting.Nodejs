@@ -8,7 +8,7 @@ router.get('/orders', (req, res) => {
   console.log(data2);
   const customerID = req.query.customerID;
   console.log(customerID)
- 
+ const productlength = req.query.productlength;
 
   // รับค่า ProductID ที่ถูกส่งมาแยกเป็น Array ด้วยเครื่องหมาย "," แล้วแปลงเป็นตัวเลข
   var productIDs = req.query.productIDs.split(',').map(Number);

@@ -38,7 +38,7 @@
                 <td><span class="subtotal"  data-product-id="<%= products[i].productID %>" data-product-price="<%= products[i].productPrice %>"><%= subtotals[i] %></span></td>
                 <input type="hidden" name="ProductID" id="hiddenProductID" value='<%= products[i].productID %>'>
                 <input type="hidden" name="ProductPrice" id="hiddenProductPrice" value='<%= products[i].productPrice %>'>
-                <input type="text" name="subtotals" id="hiddenSubtotals" value='<%= subtotals[i] %>'>
+                <input type="hidden" name="subtotals" id="hiddenSubtotals" value='<%= subtotals[i] %>'>
               </tr>
             <% } %>
           </tbody>
@@ -52,7 +52,12 @@
       <div class="text-center">
         <!-- ส่วน HTML ในแบบฟอร์ม -->
         <input type="hidden" name="totalPrice" id="hiddenTotal" value="<%= total %>">
-   
+        <% products.forEach(function(product) { %>
+          <li>
+              <p>ชื่อสินค้า: <%= product.productName %></p>
+              
+          </li>
+        <% }); %>
         <input type="hidden" name="customerID" id="hiddencustomerID" value='<%= customerID %>'>
         <button type="submit" class="btn btn-secondary">ยืนยันการซื้อสินค้า</button>
         
