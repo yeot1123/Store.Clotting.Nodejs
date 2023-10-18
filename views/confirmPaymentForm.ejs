@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .form-group {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            margin: 0 auto;
+        }
+        
+        .card-text {
+            margin: 5px 0;
+        }
+        
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="paymentForm" action="/recept" method="get">
+        <h1>รายละเอียดการสั่งซื้อ</h1>
+        <div class="form-group">
+            <p class="card-text">จัดส่งคุณ : <%= payment[0].PayName %></p>
+            <p class="card-text">ที่อยู่ในการจัดส่ง : <%= payment[0].PayAddress %></p>
+            <p class="card-text">เบอร์ติดต่อ: <%= payment[0].PayTel %></p>
+            <p class="card-text">จำนวนยอดที่ชำระ : <%= payment[0].TotalAll %> บาท</p>
+
+            <input type="hidden" name="PayName" value="<%= payment[0].PayName %>">
+            <input type="hidden" name="PayAddress" value="<%= payment[0].PayAddress %>">
+            <input type="hidden" name="PaymentID" value="<%= payment[0].PaymentID %>">
+            <input type="hidden" name="TotalAll" value="<%= payment[0].TotalAll %>">
+            <input type="hidden" name="customerID" value="<%= payment[0].customerID %>">
+
+            <% for (let i = 0; i < products.length; i++) { %>
+                <input type="hidden" name="ProductName" value="<%=  products[i].productName %>">
+                <input type="hidden" name="Quantity" value="<%=  products[i].Quantity %>">
+                <input type="hidden" name="SubTotalPrice" value="<%=  products[i].SubTotalPrice  %>">
+            <% } %>
+
+            <button type="submit" class="btn btn-primary">ใบเสร็จการชำระเงิน</button>
+        </div>
+    </form>
+
+    <!-- JavaScript เพื่อแสดง Popup เมื่อคลิกปุ่ม "ใบเสร็จการชำระเงิน" -->
+    <script>
+        const paymentForm = document.getElementById('paymentForm');
+        paymentForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // ป้องกันค่าเริ่มต้นของฟอร์ม
+
+            // แสดง Popup
+            const popup = document.createElement('div');
+            popup.innerHTML = `
+                <div id="popup" style="display: block; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                    <p>กำลังดำเนินการออกใบเสร็จ</p>
+                </div>
+            `;
+            document.body.appendChild(popup);
+
+            // ส่งข้อมูลไปที่ /recept
+            setTimeout(function () {
+                paymentForm.submit();
+            }, 1000); // รอ 1 วินาทีก่อนส่งฟอร์ม
+        });
+    </script>
+</body>
+</html>
