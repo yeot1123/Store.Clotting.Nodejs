@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('../connect');
 const multer = require('multer'); // เพิ่ม Multer
-// const jpg = require('jpg');
 
-//'/Users/thanaboon/SlipPayment
+
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'D:\\ejs\\Store.Clotting.Nodejs-main\\public\\SlipPayment'); // ชื่อโฟลเดอร์ที่คุณต้องการเก็บไฟล์
