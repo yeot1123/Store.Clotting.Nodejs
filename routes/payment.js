@@ -31,8 +31,10 @@ const upload = multer({ storage: storage });
 
 router.post('/payment/:customerID/:totalAll/', upload.single('SlipPayment'), (req, res) => {
   var values = [req.body];
+  //req มาจาก form รูปภาพ
   const uploadedFile = req.file.filename; 
-  // var id = req.params.customerID;
+
+
   var values = {
     PayName: req.body.PayName,
     PayAddress: req.body.PayAddress,
